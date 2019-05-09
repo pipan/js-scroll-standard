@@ -1,0 +1,46 @@
+{
+  "name": "@wildebeest/scroll-standard",
+  "version": "0.1.0",
+  "description": "Scroll element with custom scroll bar",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc --declaration",
+    "test": "jest",
+    "deploy": "npm run test && npm run build && git add -A && git commit -m 'deploy' && git push origin master",
+    "patch": "npm run deploy && npm version patch && npm publish",
+    "minor": "npm run deploy && npm version minor && npm publish",
+    "major": "npm run deploy && npm version major && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipan/js-scroll.git"
+  },
+  "dependencies": {
+    "@wildebeest/common": "^0.2.2",
+    "@wildebeest/component": "^0.1.0",
+    "@wildebeest/drag": "^0.3.0",
+    "@wildebeest/js-modules": "^0.1.0",
+    "@wildebeest/touch": "^0.3.0",
+    "@wildebeest/scroll": "^0.3.12"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "jest": "^24.7.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.3"
+  },
+  "keywords": [
+    "js",
+    "module",
+    "scroll",
+    "custom",
+    "absolute"
+  ],
+  "author": "Peter Gasparik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pipan/js-scroll/issues"
+  },
+  "homepage": "https://github.com/pipan/js-scroll#readme"
+}
