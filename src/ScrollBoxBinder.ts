@@ -1,14 +1,17 @@
 import { injectable, inject } from "inversify";
-import { ComponentBinder, Component } from "@wildebeest/component";
+import { ComponentBinder, Component, ElementService } from "@wildebeest/component";
 import { ScrollBox } from "@wildebeest/scroll";
 
 @injectable()
 export class ScrollBoxBinder implements ComponentBinder
 {
     protected scrollBoxFactory: () => ScrollBox;
-    constructor(@inject('Factory<ScrollBox>') scrollBoxFactory: () => ScrollBox)
+    protected elementService: ElementService;
+
+    constructor(@inject('Factory<ScrollBox>') scrollBoxFactory: () => ScrollBox, @inject(ElementService) elementService: ElementService)
     {
         this.scrollBoxFactory = scrollBoxFactory;
+        this.elementService = elementService;
     }
 
     bind(element: HTMLElement): Component
@@ -24,6 +27,7 @@ export class ScrollBoxBinder implements ComponentBinder
             config.onScroll.delay = element.getAttribute('data-hide-delay');
         }
         scrollBox.initialize(element, config);
+        this.elementService.addComponent(element, scrollBox);
         return scrollBox;
     }
 }

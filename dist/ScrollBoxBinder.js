@@ -13,9 +13,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var inversify_1 = require("inversify");
+var component_1 = require("@wildebeest/component");
 var ScrollBoxBinder = (function () {
-    function ScrollBoxBinder(scrollBoxFactory) {
+    function ScrollBoxBinder(scrollBoxFactory, elementService) {
         this.scrollBoxFactory = scrollBoxFactory;
+        this.elementService = elementService;
     }
     ScrollBoxBinder.prototype.bind = function (element) {
         var scrollBox = this.scrollBoxFactory();
@@ -29,12 +31,13 @@ var ScrollBoxBinder = (function () {
             config.onScroll.delay = element.getAttribute('data-hide-delay');
         }
         scrollBox.initialize(element, config);
+        this.elementService.addComponent(element, scrollBox);
         return scrollBox;
     };
     ScrollBoxBinder = __decorate([
         inversify_1.injectable(),
-        __param(0, inversify_1.inject('Factory<ScrollBox>')),
-        __metadata("design:paramtypes", [Function])
+        __param(0, inversify_1.inject('Factory<ScrollBox>')), __param(1, inversify_1.inject(component_1.ElementService)),
+        __metadata("design:paramtypes", [Function, component_1.ElementService])
     ], ScrollBoxBinder);
     return ScrollBoxBinder;
 }());
