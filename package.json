@@ -21,7 +21,7 @@
     "@wildebeest/component": "^0.2.1",
     "@wildebeest/drag": "^0.3.0",
     "@wildebeest/js-modules": "^0.1.0",
-    "@wildebeest/scroll": "^0.3.15",
+    "@wildebeest/scroll": "^0.3.16",
     "@wildebeest/touch": "^0.3.0"
   },
   "devDependencies": {
